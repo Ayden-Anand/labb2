@@ -1,20 +1,51 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function Home() {
-  const [click, setClick] = useState("bombastic");
-
-  let string = "bomb begin";
-  let number = 0;
-  let boolean = true;
+const UseStateTask = () => {
+  const [color, setColor] = useState("");
 
   return (
-    <div className="flex justify-center items-center bg-blue-50 min-h-screen ">
-      <div className="flex items-center flex-col w-[450px] h-[500px] bg-green-200 border-green-500 border-[3px] rounded-xl">
-      <button className="bg-red-500 mt-[180px] w-[240px] h-[80px] mb-[30px] text-2xl rounded-xl " onClick={() => setClick(" ")}>
-        touch me
+    <div className={`flex space-x-4 w-full h-screen bg-${color}-800`}>
+      <p>Өнгө сонгох:</p>
+      <button
+        className="border bg-red-800 py-4 px-6"
+        onClick={() => {
+          setColor("red");
+        }}
+      >
+        Улаан
       </button>
-      <p className="text-3xl text-black">{click}</p>
-      </div>
+      {color == "red" ? null : (
+        <>
+  
+          <button
+            className="border bg-blue-800 py-4 px-6"
+            onClick={() => {
+              setColor("blue");
+            }}
+          >
+            Цэнхэр
+          </button>
+          <button
+            className="border bg-green-800 py-4 px-6"
+            onClick={() => {
+              setColor("green");
+            }}
+          >
+            Ногоон
+          </button>
+        </>
+      )}
+
+      <button
+        className="border bg-gray-800 text-white py-4 px-6"
+        onClick={() => {
+          setColor("");
+        }}
+      >
+        Refresh
+      </button>
     </div>
   );
-}
+};
+
+export default UseStateTask;
