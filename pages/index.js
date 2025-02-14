@@ -1,49 +1,22 @@
-"use client";  
+import { useState } from "react";
 
-import React, { useState } from "react";
-
-const UseStateHook = () => {
-  const [color, setColor] = useState(" ");
+export default function Lab3() {
+  const [name, setName] = useState("");
 
   return (
-    <div className={`bg-${color}-800 flex space-x-4 w-full h-screen`}>
-      {color === " " && (
-        <>
-          <button
-            className="border bg-red-800 py-[30px] px-[40px]"
-            onClick={() => setColor("red")}
-          >
-            Red
-          </button>
-          <button
-            className="border bg-blue-800 py-[30px] px-[40px]"
-            onClick={() => setColor("blue")}
-          >
-            Blue
-          </button>
-          <button
-            className="border bg-green-800 py-[30px] px-[40px]"
-            onClick={() => setColor("green")}
-          >
-            Green
-          </button>
-        </>
-      )}
-      <button
-        className="border text-black bg-white px-[40px] py-[30px] "
-        onClick={() => setColor(" ")}
-      >
-        Return
-      </button>
-      {color !== " " && (
-        <button
-          className={`border py-[30px] px-[40px] text-white bg-${color}`}
-          onClick={() => setColor(color)}
-        >
-        </button>
-      )}
+    <div className="flex items-center justify-center h-screen">
+      <label>
+        Name:{" "}
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="border-black border-[1px]"
+        />
+      </label>
+      <p className="ml-[5px]">
+        Hi {name === "" ? "suragch" : name}!
+      </p>
     </div>
   );
-};
-
-export default UseStateHook;
+}
